@@ -2,6 +2,7 @@ package com.cydeo.bean_annotation;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.Primary;
 
 @Configuration
 public class ConfigApp {
@@ -17,17 +18,26 @@ public class ConfigApp {
     Make Spring use the configuration class defined in the first step
      */
 
+
+
+    // When more than one @Bean method returns the same type of object, it has to be handled
     @Bean
     FullTimeMentor fullTimeMentor(){
         return new FullTimeMentor();
     }
 
-    @Bean
+    @Bean //(name = "p1")
+    @Primary
     PartTimeMentor partTimeMentor(){
         return new PartTimeMentor();
     }
 
 
+    // can differentiate  the annotation by the name attribute
+    @Bean (name = "p2")
+    PartTimeMentor partTimeMentor2(){
+        return new PartTimeMentor();
+    }
 
 
 

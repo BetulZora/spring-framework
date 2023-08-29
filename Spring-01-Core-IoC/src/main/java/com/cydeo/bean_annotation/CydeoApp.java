@@ -28,7 +28,21 @@ public class CydeoApp {
 
         FullTimeMentor ft = container.getBean(FullTimeMentor.class);
 
-        ft.createAccount();
 
+        // use the name attribute to differentiate between two @Bean methods that return
+        // the same kind of object.
+        // two @Bean s with names p1 and p2 return a PartTimeMentor object
+        PartTimeMentor pt = container.getBean("p2", PartTimeMentor.class);
+        PartTimeMentor pt1 = container.getBean( PartTimeMentor.class);
+
+        ft.createAccount();
+        pt.createAccount();
+        pt1.createAccount();
+
+
+        // Don't need custom POJOs can also use beans from ConfigAny
+
+        String str = container.getBean(String.class);
+        System.out.println(str);
     }
 }
