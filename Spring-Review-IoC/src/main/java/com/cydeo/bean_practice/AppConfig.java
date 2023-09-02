@@ -4,15 +4,15 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
 @Configuration
-public class BeanConfig {
+public class AppConfig {
 
     @Bean
-    FullTimeEmployee getFullTimeEmployee(){
+    public FullTimeEmployee getFullTimeEmployee(){
         return new FullTimeEmployee();
     }
 
     @Bean
-    PartTimeEmployee getPartTimeEmployee(){
+    public PartTimeEmployee getPartTimeEmployee(){
         return new PartTimeEmployee();
     }
 

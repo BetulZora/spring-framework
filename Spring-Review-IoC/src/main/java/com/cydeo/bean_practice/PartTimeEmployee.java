@@ -1,9 +1,9 @@
 package com.cydeo.bean_practice;
 
 public class PartTimeEmployee {
-    void createAccount(){
+    public void createAccount(){
 
-        System.out.println("This is your Full Time Employee");
+        System.out.println("This is your Part Time Employee");
 
     }
 }
