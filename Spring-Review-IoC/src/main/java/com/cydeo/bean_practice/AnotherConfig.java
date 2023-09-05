@@ -8,7 +8,7 @@ import org.springframework.context.annotation.Primary;
 @Configuration
 public class AnotherConfig {
 
-    @Bean (name = "greeting")
+    @Bean //(name = "greeting")
 String greeting(){
     return "Welcome to CydeoApp";
 
