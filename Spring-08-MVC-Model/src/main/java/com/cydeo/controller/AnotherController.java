@@ -10,11 +10,10 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Controller
-@RequestMapping("/mentor")
-public class MentorController {
+@RequestMapping("/another")
+public class AnotherController {
 
-
-    // this end point is actually joint /mentor/list
+    // this end point is actually joint /another/list
     @RequestMapping("/list")
     public String mentorMethod(Model model){
         Mentor mentor1 = new Mentor("Mike", "Smith", 45, Gender.MALE);
@@ -30,8 +29,6 @@ public class MentorController {
         mentors.add(mentor3);
 
         model.addAttribute("mentors", mentors);
-        return "mentor/mentorList";
+        return "mentor/mentorList.html";
     }
-
-
 }
