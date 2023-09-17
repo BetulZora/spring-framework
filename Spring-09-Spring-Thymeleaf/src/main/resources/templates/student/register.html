@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>This is template</title>
+</head>
+<body>
+<h2>Welcome New Student!</h2>
+<!-- Displaying the values -->
+
+<h3>Please be friendly to:</h3>
+<h2 th:text="${students.get(3).firstName}"></h2>
+<h2 th:text="${students.get(3).lastName}"></h2>
+
+<!-- Concatenate -->
+
+<h3>First kind of concatenation:</h3>
+<h3 th:text=" 'Hi ' + ${students.get(3).firstName}"></h3>
+<h3>Second kind of concatenation:</h3>
+<h3 th:text="${'Hi '+ students.get(3).firstName}"></h3>
+
+<h3>Please be friendly to:</h3>
+<h2 th:text=" 'Hi ' + ${students.get(3).firstName} + ' ' +${students.get(3).lastName}"></h2>
+
+<!-- Link -->
+<h3>This is a link to cydeo</h3>
+<a th:href="@{http://cydeo.com}">Cydeo Home Page</a>
+
+<h3>This is a link to welcome</h3>
+<a th:href="@{/student/welcome}">Welcome Page</a>
+
+<!-- Adding Parameters to Link -->
+<h3>add a query param of id = 3</h3>
+<a th:href = "@{/student/welcome(name=3)}">QueryParam</a>
+<!-- Adding Parameters to Link use Model to get more information-->
+<h3>Use model to determine the value of id query param</h3>
+<a th:href = "@{/student/welcome(name=${students.get(3).firstName})}">QueryParam</a>
+
+<!--Iteration-->
+
+<h3>Iterating With THYMELEAF</h3>
+<ul>
+    <li th:each="student : ${students}" th:text="${student.firstName}"></li>
+</ul>
+
+
+
+
+</body>
+</html>
