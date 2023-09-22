@@ -2,7 +2,7 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title>This is template</title>
+    <title th:text="#{index.page.title}">Title</title>
 </head>
 <body>
 <h2>Welcome New Student!</h2>
@@ -43,8 +43,15 @@
     <li th:each="student : ${students}" th:text="${student.firstName}"></li>
 </ul>
 
+<!-- Conditinal Logic -->
+<h3>Lets use conditional logic with TH</h3>
+<div th:text="${students.get(0).age > 25 ? 'ELIGIBLE' : 'NOT ELIGIBLE'}"></div>
 
-
+<h3 th:text="${students.get(0).state}"></h3>
+<div>
+    <span th:if="${students.get(0).getState() == 'Arizona'}">Arizona</span>
+    <span th:unless="${students.get(0).getState() == 'Arizona'}">Not Arizona</span>
+</div>
 
 </body>
 </html>
