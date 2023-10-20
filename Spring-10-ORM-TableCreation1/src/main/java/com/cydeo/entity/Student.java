@@ -2,8 +2,7 @@ package com.cydeo.entity;
 
 
 import com.cydeo.enums.Gender;
-import jakarta.persistence.*;
-
+import javax.persistence.*;
 import java.time.LocalDate;
 import java.time.LocalTime;
 
