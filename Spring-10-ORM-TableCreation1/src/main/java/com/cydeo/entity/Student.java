@@ -1,6 +1,7 @@
 package com.cydeo.entity;
 
 
+import com.cydeo.enums.Gender;
 import jakarta.persistence.*;
 
 import java.time.LocalDate;
@@ -36,6 +37,12 @@ public class Student {
     private LocalTime birthTime;
     @Column(name="TIMESTAMP")
     private LocalDate birthDateTime;
+
+    // Can also use Enums --> they are coded in as smallint by default
+    // Use @Enumerated(EnumType.String) to make it recognize as a string
+    @Enumerated(EnumType.STRING)
+    private Gender gender;
+
 
     // by default, the table created will take camel case, convert to lowercase separated by "_"
     // firstName becomes first_name
