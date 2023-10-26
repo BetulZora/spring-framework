@@ -48,5 +48,8 @@ public class Employee extends BaseEntity {
       this.hireDate = hireDate;
       this.salary = salary;
       this.gender = gender;
+
+      // Annotated Foreign key column fields do not have to be in the constructor
+      // These are handled in the background by hibernate
    }
 }
