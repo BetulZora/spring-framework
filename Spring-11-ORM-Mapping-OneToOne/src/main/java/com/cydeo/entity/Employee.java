@@ -23,10 +23,17 @@ public class Employee extends BaseEntity {
    @Enumerated(EnumType.STRING)
    private Gender gender;
 
+   // Because department is tied to another @Entity, this deserves special treatment
+   // Use annotations to set the nature of the relationship in the database tables
+   // in this case, one Employee can be a part of only one department. So this is a OneToOne relationship
+   @OneToOne
+   @JoinColumn(name = "departmentId")
+   private Department department;
+
 
    // will uncomment these later
    //private int regionId;
-   //private String department;
+   //
 
 
    public Employee(String firstName, String lastName, String email, LocalDate hireDate, int salary, Gender gender) {
