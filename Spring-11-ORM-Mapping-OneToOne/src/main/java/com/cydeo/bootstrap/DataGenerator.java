@@ -2,6 +2,7 @@ package com.cydeo.bootstrap;
 
 import com.cydeo.entity.Department;
 import com.cydeo.entity.Employee;
+import com.cydeo.entity.Region;
 import com.cydeo.enums.Gender;
 import com.cydeo.respository.DepartmentRepository;
 import com.cydeo.respository.EmployeeRepository;
@@ -17,18 +18,20 @@ import java.util.List;
 public class DataGenerator implements CommandLineRunner {
 
     EmployeeRepository employeeRepository;
-    DepartmentRepository departmentRepository;
+    //DepartmentRepository departmentRepository;
+    // RegionRepository is not needed because of the HasA relationship
 
-    public DataGenerator(EmployeeRepository employeeRepository, DepartmentRepository departmentRepository) {
+    public DataGenerator(EmployeeRepository employeeRepository) {
         this.employeeRepository = employeeRepository;
-        this.departmentRepository = departmentRepository;
+      //  this.departmentRepository = departmentRepository;
     }
 
     @Override
     public void run(String... args) throws Exception {
 
         List<Employee> employeeList = new ArrayList<>();
-        List<Department> departmentList = new ArrayList<>();
+        //List<Department> departmentList = new ArrayList<>();
+        //see .setDepartment() line for an explanation
 
         Employee e1 = new Employee("Berrie", "Manueau", "bmanueau0@dion.ne.jp", LocalDate.of(2006,04,20),154864, Gender.F);
         Employee e2 = new Employee("Aeriell", "McNee", "amcnee1@google.es", LocalDate.of(2009,01,26),56752, Gender.F);
@@ -42,18 +45,14 @@ public class DataGenerator implements CommandLineRunner {
         Department d4 = new Department("Phones & Tablets","Electronics");
         Department d5 = new Department("Computers","Electronics");
 
-        /*
+
         Region r1 = new Region("Southwest","United States");
         Region r2 = new Region("Central","United States");
         Region r3 = new Region("Northwest","United States");
         Region r4 = new Region("Quebec'","Canada");
         Region r5 = new Region("Central","Asia");
 
-        e1.setDepartment(d1);
-        e2.setDepartment(d2);
-        e3.setDepartment(d3);
-        e4.setDepartment(d4);
-        e5.setDepartment(d5);
+
 
         e1.setRegion(r1);
         e2.setRegion(r2);
@@ -61,18 +60,30 @@ public class DataGenerator implements CommandLineRunner {
         e4.setRegion(r4);
         e5.setRegion(r5);
 
-         */
 
+
+        // This determines the onetoone bidirectional relationship
+        e1.setDepartment(d1);
+        e2.setDepartment(d2);
+        e3.setDepartment(d3);
+        e4.setDepartment(d4);
+        e5.setDepartment(d5);
+        // because of the relationship between objects, defining the departments of Employee
+        // objects automatically creates the departments table
+        // therefore, we do not need to explicitly save the custom departments
+        // we will have saved them by setting the departments of employees.
 
 
 
         employeeList.addAll(Arrays.asList(e1,e2,e3,e4,e5));
-        departmentList.addAll(Arrays.asList(d1,d2,d3,d4,d5));
+       // departmentList.addAll(Arrays.asList(d1,d2,d3,d4,d5));
+        //see .setDepartment() line for an explanation
 
 
         // save the lists in the repository
         employeeRepository.saveAll(employeeList);
-        departmentRepository.saveAll(departmentList);
+       // departmentRepository.saveAll(departmentList);
+        //see .setDepartment() line for an explanation
 
 
 

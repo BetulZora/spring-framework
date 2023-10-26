@@ -26,10 +26,15 @@ public class Employee extends BaseEntity {
    // Because department is tied to another @Entity, this deserves special treatment
    // Use annotations to set the nature of the relationship in the database tables
    // in this case, one Employee can be a part of only one department. So this is a OneToOne relationship
-   @OneToOne
+  // choosing CascadeType.ALL because when the Employee is saved, want Department to be saved too.
+   // can use @OneToOne(cascade = {CascadeType.PERSIST, CascadeType.REMOVE})
+   @OneToOne(cascade = CascadeType.ALL)
    @JoinColumn(name = "departmentId")
    private Department department;
 
+   @OneToOne(cascade = CascadeType.ALL)
+   @JoinColumn(name = "regionId")
+   private Region region;
 
    // will uncomment these later
    //private int regionId;
