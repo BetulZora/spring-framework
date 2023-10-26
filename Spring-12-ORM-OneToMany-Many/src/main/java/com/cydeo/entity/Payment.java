@@ -1,12 +1,13 @@
 package com.cydeo.entity;
 
 import com.cydeo.enums.Status;
-import jakarta.persistence.*;
+import javax.persistence.*;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import java.math.BigDecimal;
 import java.time.LocalDate;
+import java.util.List;
 
 @Entity
 @Table(name="payments")
@@ -34,4 +35,11 @@ public class Payment extends BaseEntity{
     private Merchant merchant;
 
      */
+
+    // In this OneToMany relationship, the foreign key will be in this.
+    // IMPORTANT: in OneToMany relationship, ownership should always be given to the class that is Many
+
+    //Notice that in the Merchant side, the relation is OneToMany
+    @ManyToOne()
+    private Merchant merchant;
 }
