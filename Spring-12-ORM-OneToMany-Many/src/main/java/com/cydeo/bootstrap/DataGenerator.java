@@ -1,9 +1,11 @@
 package com.cydeo.bootstrap;
 
+import com.cydeo.entity.Customer;
 import com.cydeo.entity.Merchant;
 import com.cydeo.entity.Payment;
 import com.cydeo.entity.PaymentDetail;
 import com.cydeo.enums.Status;
+import com.cydeo.repository.CustomerRepository;
 import com.cydeo.repository.MerchantRepository;
 import com.cydeo.repository.PaymentRepository;
 import org.springframework.boot.CommandLineRunner;
@@ -21,10 +23,12 @@ public class DataGenerator implements CommandLineRunner {
     // In this case, because there is no cascading in relationships involving Many,
     // Repositories that involve Many require dependencies and injection of both repositories
     private final MerchantRepository merchantRepository;
+    private final CustomerRepository customerRepository;
 
-    public DataGenerator(PaymentRepository paymentRepository, MerchantRepository merchantRepository) {
+    public DataGenerator(PaymentRepository paymentRepository, MerchantRepository merchantRepository, CustomerRepository customerRepository) {
         this.paymentRepository = paymentRepository;
         this.merchantRepository = merchantRepository;
+        this.customerRepository = customerRepository;
     }
 
     @Override
@@ -47,8 +51,6 @@ public class DataGenerator implements CommandLineRunner {
 
 
 
-        /*
-
 
         Customer customer1 = new Customer("msmith","Mike","Smith","msmith@cydeo.com","VA");
 
@@ -57,7 +59,7 @@ public class DataGenerator implements CommandLineRunner {
 
         customerRepository.save(customer1);
 
-
+/*
 
         Item item1 = new Item("Milk","M01");
         Item item2 = new Item("Sugar","S01");
@@ -75,13 +77,6 @@ public class DataGenerator implements CommandLineRunner {
 
         cartRepository.save(cart1);
         cartRepository.save(cart2);
-
-
-
-
-
-
-
 
         */
 

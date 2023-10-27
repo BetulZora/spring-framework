@@ -42,4 +42,7 @@ public class Payment extends BaseEntity{
     //Notice that in the Merchant side, the relation is OneToMany
     @ManyToOne
     private Merchant merchant;
+
+    @ManyToOne
+    private Customer customer;
 }
