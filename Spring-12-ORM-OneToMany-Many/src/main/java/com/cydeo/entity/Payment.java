@@ -40,6 +40,6 @@ public class Payment extends BaseEntity{
     // IMPORTANT: in OneToMany relationship, ownership should always be given to the class that is Many
 
     //Notice that in the Merchant side, the relation is OneToMany
-    @ManyToOne()
+    @ManyToOne
     private Merchant merchant;
 }

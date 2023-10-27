@@ -1,8 +1,10 @@
 package com.cydeo.bootstrap;
 
+import com.cydeo.entity.Merchant;
 import com.cydeo.entity.Payment;
 import com.cydeo.entity.PaymentDetail;
 import com.cydeo.enums.Status;
+import com.cydeo.repository.MerchantRepository;
 import com.cydeo.repository.PaymentRepository;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Component;
@@ -16,8 +18,13 @@ public class DataGenerator implements CommandLineRunner {
 
     private final PaymentRepository paymentRepository;
 
-    public DataGenerator(PaymentRepository paymentRepository) {
+    // In this case, because there is no cascading in relationships involving Many,
+    // Repositories that involve Many require dependencies and injection of both repositories
+    private final MerchantRepository merchantRepository;
+
+    public DataGenerator(PaymentRepository paymentRepository, MerchantRepository merchantRepository) {
         this.paymentRepository = paymentRepository;
+        this.merchantRepository = merchantRepository;
     }
 
     @Override
@@ -32,8 +39,16 @@ public class DataGenerator implements CommandLineRunner {
         PaymentDetail paymentDetail2 = new PaymentDetail(new BigDecimal("90000"),new BigDecimal("5000"),LocalDate.of(2022,4,29));
 
         payment2.setPaymentDetail(paymentDetail2);
-/*
+
         Merchant merchant1 = new Merchant("AmazonSubMerchant","M123",new BigDecimal("0.25"),new BigDecimal("3.25"),5);
+
+        payment1.setMerchant(merchant1);
+        payment2.setMerchant(merchant1);
+
+
+
+        /*
+
 
         Customer customer1 = new Customer("msmith","Mike","Smith","msmith@cydeo.com","VA");
 
@@ -43,10 +58,6 @@ public class DataGenerator implements CommandLineRunner {
         customerRepository.save(customer1);
 
 
-
-
-        payment1.setMerchant(merchant1);
-        payment2.setMerchant(merchant1);
 
         Item item1 = new Item("Milk","M01");
         Item item2 = new Item("Sugar","S01");
@@ -71,14 +82,15 @@ public class DataGenerator implements CommandLineRunner {
 
 
 
-        merchantRepository.save(merchant1);
+
         */
 
-
+        merchantRepository.save(merchant1);
 
 
         paymentRepository.save(payment1);
         paymentRepository.save(payment2);
+
 
 
 
