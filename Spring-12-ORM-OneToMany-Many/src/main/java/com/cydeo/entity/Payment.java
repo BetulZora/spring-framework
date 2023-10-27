@@ -45,4 +45,9 @@ public class Payment extends BaseEntity{
 
     @ManyToOne
     private Customer customer;
+
+    @OneToOne
+    private Cart cart;
+
+
 }

@@ -1,13 +1,8 @@
 package com.cydeo.bootstrap;
 
-import com.cydeo.entity.Customer;
-import com.cydeo.entity.Merchant;
-import com.cydeo.entity.Payment;
-import com.cydeo.entity.PaymentDetail;
+import com.cydeo.entity.*;
 import com.cydeo.enums.Status;
-import com.cydeo.repository.CustomerRepository;
-import com.cydeo.repository.MerchantRepository;
-import com.cydeo.repository.PaymentRepository;
+import com.cydeo.repository.*;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Component;
 
@@ -24,11 +19,17 @@ public class DataGenerator implements CommandLineRunner {
     // Repositories that involve Many require dependencies and injection of both repositories
     private final MerchantRepository merchantRepository;
     private final CustomerRepository customerRepository;
+    private final ItemRepository itemRepository;
+    private final CartRepository cartRepository;
 
-    public DataGenerator(PaymentRepository paymentRepository, MerchantRepository merchantRepository, CustomerRepository customerRepository) {
+    public DataGenerator(PaymentRepository paymentRepository, MerchantRepository merchantRepository,
+                         CustomerRepository customerRepository, ItemRepository itemRepository,
+                         CartRepository cartRepository) {
         this.paymentRepository = paymentRepository;
         this.merchantRepository = merchantRepository;
         this.customerRepository = customerRepository;
+        this.itemRepository = itemRepository;
+        this.cartRepository = cartRepository;
     }
 
     @Override
@@ -57,9 +58,11 @@ public class DataGenerator implements CommandLineRunner {
         payment1.setCustomer(customer1);
         payment2.setCustomer(customer1);
 
+        // Recall: because of the ManyToOne relationship, cannot do Cascading.
+        // therefore, the One side must be saved before the Many side is saved
         customerRepository.save(customer1);
 
-/*
+
 
         Item item1 = new Item("Milk","M01");
         Item item2 = new Item("Sugar","S01");
@@ -70,7 +73,6 @@ public class DataGenerator implements CommandLineRunner {
 
         cart1.setItemList(Arrays.asList(item1,item2,item3));
         cart2.setItemList(Arrays.asList(item1,item2));
-
         itemRepository.save(item1);
         itemRepository.save(item2);
         itemRepository.save(item3);
@@ -78,7 +80,10 @@ public class DataGenerator implements CommandLineRunner {
         cartRepository.save(cart1);
         cartRepository.save(cart2);
 
-        */
+
+        payment1.setCart(cart1);
+        payment2.setCart(cart2);
+
 
         merchantRepository.save(merchant1);
 
