@@ -5,12 +5,10 @@ import com.cydeo.enums.MovieType;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.EnumType;
-import javax.persistence.Enumerated;
+import javax.persistence.*;
 import java.math.BigDecimal;
 import java.time.LocalDate;
+import java.util.List;
 
 @Entity
 @NoArgsConstructor
@@ -29,6 +27,12 @@ public class Movie extends BaseEntity{
     @Enumerated(EnumType.STRING)
     private MovieState state;
     private BigDecimal price;
+
+    @JoinTable(name="movie_genre_rel", // name the join table
+    joinColumns = @JoinColumn(name="movie_id"), // name the column representing this class
+    inverseJoinColumns =  @JoinColumn(name = "genre_id")) // name the column representing the other class
+    @ManyToMany
+    private List<Genre> genreList;
 
 
 }
