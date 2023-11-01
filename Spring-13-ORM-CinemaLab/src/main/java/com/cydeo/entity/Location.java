@@ -21,7 +21,8 @@ public class Location extends BaseEntity {
     private String postalCode;
     private String address;
 
-    private List<MovieCinema> movieCinemaList;
+
+
 
 
 }
