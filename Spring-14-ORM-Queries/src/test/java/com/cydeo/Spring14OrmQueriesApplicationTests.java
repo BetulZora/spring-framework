@@ -1,13 +1,13 @@
-package com.cydeo.ormtablecreation;
+package com.cydeo;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
 @SpringBootTest
-class Spring10OrmTableCreationApplicationTests {
+class Spring14OrmQueriesApplicationTests {
 
-	@Test
-	void contextLoads() {
-	}
+    @Test
+    void contextLoads() {
+    }
 
 }
