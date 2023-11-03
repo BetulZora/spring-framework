@@ -46,9 +46,13 @@ public class DataGenerator implements CommandLineRunner {
         System.out.println(employeeRepository.countEmployeeBySalaryGreaterThan(100000));
         System.out.println(employeeRepository.countEmployeeBySalaryLessThanEqual(100000));
         //System.out.println(employeeRepository.findBySalaryGreaterThanEqualOrderBySalaryDesc(100000));
-        System.out.println(employeeRepository.findByEmailIsNull());
+        //System.out.println(employeeRepository.findByEmailIsNull());
 
         System.out.println("---------------------------+++++++++Employee End");
+        System.out.println("---------------------------+++++++++Employee JPQL Start");
+        System.out.println(employeeRepository.getEmployeeDetail());
+        System.out.println(employeeRepository.getEmployeeSalary());
+        System.out.println("---------------------------+++++++++Employee JPQL End");
 
 
     }
