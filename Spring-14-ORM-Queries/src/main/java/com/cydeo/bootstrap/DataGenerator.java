@@ -63,14 +63,14 @@ public class DataGenerator implements CommandLineRunner {
         System.out.println("---------------------------+++++++++Courses Start");
         // System.out.println(courseRepository.findByCategory("Spring"));
         courseRepository.findByCategory("Spring").forEach(System.out::println);
-        System.out.println("%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%");
+        System.out.println("------------------------------------------------------");
         courseRepository.findByCategoryOrderByNameDesc("Spring").forEach(System.out::println);
         System.out.println(courseRepository.existsByName("Getting Started with Spring Cloud Kubernetes"));
         System.out.println("courseRepository.existsByName(\"JavaScript\") = " + courseRepository.existsByName("JavaScript"));
         System.out.println("courseRepository.countByCategory(\"Spring\") = " + courseRepository.countByCategory("Spring"));
         courseRepository.findByNameStartsWith("Rapid Spring Boot").forEach(System.out::println);
-        System.out.println("%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%");
-        courseRepository.streamByCategory("Spring").forEach(System.out::println);
+        System.out.println("------------------------------------------------------");
+        //courseRepository.streamByCategory("Spring").forEach(System.out::println);
         System.out.println("---------------------------+++++++++Courses End");
 
 
