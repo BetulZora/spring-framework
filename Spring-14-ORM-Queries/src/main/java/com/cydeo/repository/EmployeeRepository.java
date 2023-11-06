@@ -91,6 +91,9 @@ public interface EmployeeRepository extends JpaRepository<Employee,Long> {
     @Query("SELECT e from Employee e order by e.salary DESC")
     List<Employee> getEmployeeSalaryOrderDesc();
 
+    // Use a Native SQL query, not JPQL
+    @Query(value = "SELECT * FROM employees WHERE salary = ?1", nativeQuery = true)
+    List<Employee> readEmployeeDetailBySalary(int salary);
 
 
 
