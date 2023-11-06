@@ -1,8 +1,10 @@
 package com.cydeo.repository;
 
 import com.cydeo.entity.Department;
+import com.cydeo.entity.Employee;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
+import org.springframework.data.repository.query.Param;
 
 import java.util.List;
 
@@ -20,5 +22,12 @@ public interface DepartmentRepository extends JpaRepository<Department, String> 
 
     @Query("SELECT d FROM Department d WHERE d.division IN ?1")
     List<Department> getDepartmentDivision(List<String> division);
+
+    //This is an example of a Named Query
+    // The query to execute this method is stored in jpa-named-queries.properties
+    List<Department> retrieveDepartmentByDivision(String division);
+
+    @Query(nativeQuery = true)
+    List<Department> retrieveDepartmentByDivisionContain(String pattern);
 
 }
