@@ -3,6 +3,7 @@ package com.cydeo.repository;
 import com.cydeo.entity.Course;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
+import org.springframework.data.repository.query.Param;
 
 import java.util.List;
 import java.util.stream.Stream;
@@ -26,6 +27,19 @@ public interface CourseRepository extends JpaRepository<Course,Long> {
 
     // find all course that start with a category and returns a stream
     Stream<Course> streamByCategory(String category);
+
+    @Query("Select c from Course c where c.rating > :rating AND c.category = :category")
+    List<Course> findAllByCategoryAndRatingGreaterThan(@Param("rating") int rating, @Param("category") String category);
+
+
+
+
+
+
+
+
+
+
 
 
 }
