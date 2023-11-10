@@ -1,6 +1,7 @@
 package com.cydeo.repository;
 
 import com.cydeo.entity.Ticket;
+import com.cydeo.entity.User;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 public interface TicketRepository extends JpaRepository<Ticket, Long> {
@@ -8,6 +9,7 @@ public interface TicketRepository extends JpaRepository<Ticket, Long> {
     // ------------------- DERIVED QUERIES ------------------- //
 
     //Write a derived query to count how many tickets a user bought
+    Integer countTicketsByUserAccount(User user);
 
     //Write a derived query to list all tickets by specific email
 
