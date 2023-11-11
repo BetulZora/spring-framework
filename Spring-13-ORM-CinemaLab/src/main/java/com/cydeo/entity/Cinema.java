@@ -24,7 +24,7 @@ public class Cinema extends BaseEntity{
     public String toString() {
         return "Cinema{" +
                 "name='" + name + '\'' +
-                ", sponsoredName='" + sponsoredName + '\'' +
+                ", sponsoredName='" + sponsored_name + '\'' +
                 '}';
     }
 }
