@@ -15,7 +15,7 @@ import javax.persistence.ManyToOne;
 public class Cinema extends BaseEntity{
 
     private String name;
-    private String sponsored_name;
+    private String sponsoredName;
 
     @ManyToOne (fetch = FetchType.LAZY)
     private Location location;
@@ -24,7 +24,7 @@ public class Cinema extends BaseEntity{
     public String toString() {
         return "Cinema{" +
                 "name='" + name + '\'' +
-                ", sponsoredName='" + sponsored_name + '\'' +
+                ", sponsoredName='" + sponsoredName + '\'' +
                 '}';
     }
 }
