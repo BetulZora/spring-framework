@@ -3,13 +3,19 @@ package com.cydeo.repository;
 import com.cydeo.entity.Movie;
 import org.springframework.data.jpa.repository.JpaRepository;
 
+import java.math.BigDecimal;
+import java.util.List;
+import java.util.Optional;
+
 public interface MovieRepository extends JpaRepository<Movie, Long> {
 
     // ------------------- DERIVED QUERIES ------------------- //
 
     //Write a derived query to read a movie with a name
+    Optional<Movie> findByName(String name);
 
     //Write a derived query to list all movies between a range of prices
+    List<Movie> findAllByPriceBetween(BigDecimal lowPrice, BigDecimal highPrice);
 
     //Write a derived query to list all movies where duration exists in the specific list of duration
 

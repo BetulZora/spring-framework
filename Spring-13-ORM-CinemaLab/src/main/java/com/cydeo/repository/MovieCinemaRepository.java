@@ -1,11 +1,9 @@
 package com.cydeo.repository;
 
-import com.cydeo.entity.Movie;
 import com.cydeo.entity.MovieCinema;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 
-import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.List;
 import java.util.Optional;
