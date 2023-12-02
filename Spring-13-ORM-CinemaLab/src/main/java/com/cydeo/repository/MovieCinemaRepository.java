@@ -16,7 +16,7 @@ public interface MovieCinemaRepository extends JpaRepository<MovieCinema, Long> 
     Optional<MovieCinema> findById(Long id);
 
     //Write a derived query to count all movie cinemas with a specific cinema id
-    Integer countByCinemaId(Long id);
+    Integer countAllByCinemaId(Long id);
 
     //Write a derived query to count all movie cinemas with a specific movie id
     Integer countByMovieId(Long id);
@@ -52,5 +52,10 @@ public interface MovieCinemaRepository extends JpaRepository<MovieCinema, Long> 
             "where l.name = ?1",
     nativeQuery = true)
     List<MovieCinema> fetchByLocation(String location);
+
+    @Query(value = "SELECT * FROM movie_cinema mc JOIN cinema c " +
+            " ON mc.cinema_id = c.id JOIN location l ON c.location_id = l.id " +
+            " WHERE l.name = ?1",nativeQuery = true)
+    List<MovieCinema> retrieveAllByLocationName(String name);
 
 }

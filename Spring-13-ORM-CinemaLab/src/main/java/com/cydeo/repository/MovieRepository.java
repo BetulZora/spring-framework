@@ -2,6 +2,7 @@ package com.cydeo.repository;
 
 import com.cydeo.entity.Movie;
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Query;
 
 import java.math.BigDecimal;
 import java.util.List;
@@ -28,6 +29,8 @@ public interface MovieRepository extends JpaRepository<Movie, Long> {
     //Write a JPQL query to list all movies between a range of prices
 
     //Write a JPQL query that returns all movie names
+    @Query("SELECT m.name FROM Movie m")
+    List<String> fetchAllMovieNames();
 
     // ------------------- Native QUERIES ------------------- //
 
