@@ -16,7 +16,7 @@ public interface MovieCinemaRepository extends JpaRepository<MovieCinema, Long> 
     Optional<MovieCinema> findById(Long id);
 
     //Write a derived query to count all movie cinemas with a specific cinema id
-    Integer countByCinemaId(Long id);
+    Integer countAllByCinemaId(Long id);
 
     //Write a derived query to count all movie cinemas with a specific movie id
     Integer countByMovieId(Long id);
