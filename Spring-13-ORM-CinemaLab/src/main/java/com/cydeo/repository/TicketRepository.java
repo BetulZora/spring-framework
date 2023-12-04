@@ -27,12 +27,13 @@ public interface TicketRepository extends JpaRepository<Ticket, Long> {
     // ------------------- JPQL QUERIES ------------------- //
 
     //Write a JPQL query that returns all tickets are bought from a specific user
-    @Query("select t from Ticket t where t.userAccount.id = ?1")
+    @Query("SELECT t FROM Ticket t WHERE t.userAccount.id = ?1")
     List<Ticket> fetchAllTicketsByUserAccount(Long userId);
 
     //Write a JPQL query that returns all tickets between a range of dates
-    @Query("select t from Ticket t where t.dateTime between ?1 and ?2")
-    List<Ticket> fetchAllTicketsBetweenRangeOfDateTimes (LocalDateTime date1, LocalDateTime date2);
+    @Query("SELECT t FROM Ticket t WHERE t.dateTime BETWEEN ?1 AND ?2")
+    List<Ticket> fetchAllTicketsBetweenRangeOfDateTimes(LocalDateTime dateTime1, LocalDateTime dateTime2);
+
 
     // ------------------- Native QUERIES ------------------- //
 
@@ -56,11 +57,13 @@ public interface TicketRepository extends JpaRepository<Ticket, Long> {
     List<Ticket> findAllByUserEmail(String email);
 
     //Write a native query that returns all tickets
-    @Query(value = "select * from ticket", nativeQuery = true)
+   @Query(value = "select * from ticket", nativeQuery = true)
     List<Ticket> retrieveAll();
 
+  
     //Write a native query to list all tickets where a specific value should be containable
     // in the username or name or movie name
+
     @Query(value = "SELECT * FROM ticket t JOIN user_account ua ON t.user_account_id = ua.id " +
             " JOIN account_details ad ON ua.account_details_id = ad.id JOIN movie_cinema mc " +
             " ON t.movie_cinema_id = mc.id JOIN movie m ON mc.movie_id = m.id " +

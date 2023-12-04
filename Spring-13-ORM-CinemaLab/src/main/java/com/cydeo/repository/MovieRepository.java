@@ -37,7 +37,7 @@ public interface MovieRepository extends JpaRepository<Movie, Long> {
     List<Movie> getByPriceBetween(BigDecimal priceStart, BigDecimal priceEnd);
 
     //Write a JPQL query that returns all movie names
-    @Query("select m.name from Movie m")
+    @Query("SELECT m.name FROM Movie m")
     List<String> fetchAllMovieNames();
 
     // ------------------- Native QUERIES ------------------- //
