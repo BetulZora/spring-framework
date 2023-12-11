@@ -9,8 +9,13 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping("/courses/api/v2")
+@RequestMapping("/courses/api/v2") //notice that these are all at v2
 public class CourseController_ResponseEntity {
+
+    // ResponseEntity methods will interact with generic ResponseEntity.
+    // using DTO and collections of DTO all changed to ResponseEntities.
+
+    // This is how to create custom headers and status codes
 
     private final CourseService courseService;
 
@@ -20,8 +25,8 @@ public class CourseController_ResponseEntity {
 
     @GetMapping
     public ResponseEntity<List<CourseDTO>> getAllCourses(){
-        return ResponseEntity
-                .status(HttpStatus.ACCEPTED)
+        return ResponseEntity // need to define which status code to use, the headers and formulate the body
+                .status(HttpStatus.ACCEPTED) // this permits the use of other status codes
                 .header("Version","Cydeo.V2")
                 .header("Operation","Get List")
                 .body(courseService.getCourses());

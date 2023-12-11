@@ -2,7 +2,6 @@ package com.cydeo.controller;
 
 import com.cydeo.dto.CourseDTO;
 import com.cydeo.service.CourseService;
-import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -10,6 +9,8 @@ import java.util.List;
 @RestController // @Controller + @ResponseBody
 @RequestMapping("/courses/api/v1")
 public class CourseController {
+
+    // Without @RestController annotation, we would need to mark each method with @ResponseBody
 
     private final CourseService courseService;
 
