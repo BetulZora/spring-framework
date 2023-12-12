@@ -1,4 +1,4 @@
-package com.cydeo.spring17restconsumingapis;
+package com.cydeo;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
