@@ -15,6 +15,8 @@ import javax.persistence.*;
 @Setter
 @NoArgsConstructor
 @Table(name = "account_details")
+//@JsonIgnoreProperties(value = {"state","postalCode"},ignoreUnknown = true)
+//This is the equivalent of putting @JsonIgnore on state and postalCode fields
 @JsonIgnoreProperties(value = {"hibernateLazyInitializer"},ignoreUnknown = true)
 public class Account extends BaseEntity {
 
@@ -22,9 +24,11 @@ public class Account extends BaseEntity {
     @JsonIgnore
     private String address;
     private String country;
+    @JsonIgnore
     private String state;
     private String city;
     private Integer age;
+    @JsonIgnore
     @Column(name = "postal_code")
     private String postalCode;
 

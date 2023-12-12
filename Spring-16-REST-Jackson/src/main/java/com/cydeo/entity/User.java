@@ -16,12 +16,13 @@ import javax.persistence.*;
 @JsonIgnoreProperties(value = {"hibernateLazyInitializer"},ignoreUnknown = true)
 public class User extends BaseEntity {
 
-    //    @JsonIgnore
+    //    @JsonIgnore // would skip serialization
     private String email;
 
 
     @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
     private String password;
+    // Using this only allows execution of setters not getters.
 
 
     private String username;
