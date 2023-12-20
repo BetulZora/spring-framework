@@ -30,10 +30,8 @@ public class Movie extends BaseEntity{
     private MovieState state;
     private BigDecimal price;
 
-    @JoinTable(name="movie_genre_rel", // name the join table
-    joinColumns = @JoinColumn(name="movie_id"), // name the column representing this class
-    inverseJoinColumns =  @JoinColumn(name = "genre_id")) // name the column representing the other class
     @ManyToMany
+    @JoinTable(name = "movie_genre_rel", joinColumns = @JoinColumn(name = "movie_id"), inverseJoinColumns = @JoinColumn(name = "genre_id"))
     private List<Genre> genreList;
 
     @Override
