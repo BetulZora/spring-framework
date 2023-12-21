@@ -13,6 +13,7 @@ import java.util.List;
 @RestController
 @RequestMapping("/api/v1")
 @Tag(name = "Cinema", description = "Cinema CRUD Operations")
+// use the @Tag annotation to populate name and description fields in the Swagger document. organizes all end points together in one tag.
 public class CinemaController {
 
     private final CinemaRepository cinemaRepository;
@@ -21,6 +22,8 @@ public class CinemaController {
         this.cinemaRepository = cinemaRepository;
     }
 
+
+    // use the @Operation annotation to describe the endpoint in the swagger document.
     @GetMapping("/cinemas")
     @Operation(summary = "Read all cinemas")
     public List<Cinema> readAllCinemas(){

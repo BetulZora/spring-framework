@@ -26,7 +26,7 @@ public class UserController {
 
     @GetMapping("/users")
     @Operation(summary = "Read all users")
-    @ApiResponses(value = {
+    @ApiResponses(value = { // use this annotation to formulate the Responses line in the yaml documentation
             @ApiResponse(responseCode = "200", description = "Successfully retrieved users (OK)",
                     content = {@Content(mediaType = "application/json")}),
             @ApiResponse(responseCode = "400", description = "Something went wrong", content = @Content),
