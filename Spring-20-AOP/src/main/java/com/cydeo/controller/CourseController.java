@@ -24,9 +24,16 @@ public class CourseController {
     @GetMapping
     public List<CourseDTO> getAllCourses() {
 
-       // logger.info("Before -> Controller: {} - Method {} "," CourseController","getCourses()");
+        // These steps allow logging of the getCourses method
+
+        //logger.info("Before -> Controller: {} - Method {} "," CourseController","getCourses()");
         List<CourseDTO> list = courseService.getCourses();
-      //  logger.info("After -> Controller: {} - Method : {} - Output : {}"," CourseController","getCourses()", list.toString());
+        //logger.info("After -> Controller: {} - Method : {} - Output : {}"," CourseController","getCourses()", list.toString());
+
+        //SOLID principles limit the function of one method to one function.
+        //Therefore, logging has been enforced, not with OOP but with AOP.
+        //(The above, using Logger was based on OOP)
+
         return list;
     }
 
