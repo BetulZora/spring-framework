@@ -113,14 +113,14 @@ public class LoggingAspect {
 
     @Around("anyLoggableMethodOperation()")
     public Object anyLoggableMethodOperationAdvice(ProceedingJoinPoint proceedingJoinPoint){
-        logger.info("Before () -> Method : {} - Parameters: {}", proceedingJoinPoint.getSignature().toShortString(), proceedingJoinPoint.getArgs());
+        logger.info("Around / Before () -> Method : {} - Parameters: {}", proceedingJoinPoint.getSignature().toShortString(), proceedingJoinPoint.getArgs());
         Object results = null;
         try {
             results =proceedingJoinPoint.proceed();
         } catch (Throwable e) {
             e.printStackTrace();
         }
-        logger.info("After -> Method: {} - Results: {}", proceedingJoinPoint.getSignature().toShortString(),results.toString());
+        logger.info("Around / After -> Method: {} - Results: {}", proceedingJoinPoint.getSignature().toShortString(),results.toString());
         return results;
     }
 
