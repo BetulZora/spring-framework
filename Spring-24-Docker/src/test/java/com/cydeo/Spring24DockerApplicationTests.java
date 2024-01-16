@@ -1,13 +1,13 @@
-package com.cydeo.teamreviewconsumeapi;
+package com.cydeo;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
 @SpringBootTest
-class TeamReviewConsumeApiApplicationTests {
+class Spring24DockerApplicationTests {
 
-	@Test
-	void contextLoads() {
-	}
+    @Test
+    void contextLoads() {
+    }
 
 }
