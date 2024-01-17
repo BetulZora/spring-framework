@@ -23,3 +23,9 @@ COPY ./target/Spring-24-Docker-0.0.1-SNAPSHOT.jar  /usr/app/
 WORKDIR /usr/app
 #will provide exacutable application when container starts to run
 ENTRYPOINT ["java","-jar","Spring-24-Docker-0.0.1-SNAPSHOT.jar"]
+
+# this example of Dockerfile goes with the docker-compose.yaml attached.
+#FROM amd64/maven:3.8.7-openjdk-11
+#WORKDIR usr/app
+#COPY . .
+#ENTRYPOINT ["mvn","spring-boot:run"]
